@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~nouislider/distribute/nouislider.min.css";
+
+.noUi-horizontal{
+  height: 8px !important;
+}
+.noUi-target{
+	background: #aaa;
+	border-width: 0px;
+}
+.noUi-connect{
+  background: #aaa;
+  box-shadow: none;
+}
+.noUi-horizontal .noUi-handle{
+  width: 20px;
+  height: 20px;
+  top: -6px;
+}
+.noUi-handle{
+	box-shadow: none;
+	border-radius: 50%;
+	background-color: #ee2b47;
+	border-color: #ee2b47;
+}
+.noUi-handle::after, .noUi-handle::before{
+  height: 0;
+  width: 0;
+}

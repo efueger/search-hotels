@@ -1,0 +1,25 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4 col-md-push-4">
+			
+			<div class="myForm">
+				<h3>Search Hotel</h3>
+				<form (ngSubmit)="hotelSearch(myForm)" #myForm="ngForm" novalidate>
+				    <div class="form-group">
+						<label class="control-label">From: </label>
+						<my-date-picker  name="start" [(ngModel)]="startDate" [options]="myDatePickerOptions" required></my-date-picker>
+						
+					</div>
+				
+					<div class="form-group">
+						<label class="control-label">To: </label>
+						<my-date-picker  name="end" [(ngModel)]="endDate" [options]="myDatePickerOptions" required></my-date-picker>
+					</div>
+				
+					<button class="btn btn-info btn-block" [disabled]="!myForm.valid">Search</button>
+				</form>
+			</div>
+		
+		</div>
+	</div>
+</div>
