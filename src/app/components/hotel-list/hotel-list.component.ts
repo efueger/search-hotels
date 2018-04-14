@@ -18,8 +18,8 @@ export class HotelListComponent{
 	startDate: any;
 	endDate: any;
   	hotelPrice: number = 0;
-	hotels:any;
-	result:any;
+	hotels: any;
+	result: any;
 	dateDiff: number;
 	hotelName: string;
 

@@ -9,8 +9,8 @@ import { FormGroup } from '@angular/forms';
 	styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
-	startDate: any
-	endDate: any
+	startDate: any;
+	endDate: any;
 	dateDiff: number;
 	public myForm: FormGroup;
 
@@ -21,20 +21,18 @@ export class SearchComponent {
     };
 
 	hotelSearch(e){
-	    if(this.startDate != undefined && this.endDate != undefined ){
+	    if(this.startDate !== undefined && this.endDate !== undefined ) {
 	      	this.dateDiff = Math.abs(Math.round((this.endDate.jsdate-this.startDate.jsdate)/86400000));
 
 	        let navigationExtras: NavigationExtras = {
 	            queryParams: {
-	                "start": this.startDate.formatted,
-	                "end": this.endDate.formatted,
-	                "diff": this.dateDiff
+	                'start': this.startDate.formatted,
+	                'end': this.endDate.formatted,
+	                'diff': this.dateDiff
 	            }
 	        };
 
 	      this.router.navigate(['/list'], navigationExtras);
-
 	    }
 	}
-
 }

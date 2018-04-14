@@ -3,13 +3,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 describe('AppComponent', () => {
-  // beforeEach(async(() => {
-  //   TestBed.configureTestingModule({
-  //     declarations: [
-  //       AppComponent
-  //     ],imports: [ RouterTestingModule ] 
-  //   }).compileComponents();
-  // }));
 
   beforeEach(() => { TestBed.configureTestingModule({ declarations: [ AppComponent ], imports: [ RouterTestingModule, FormsModule ] })});
 
