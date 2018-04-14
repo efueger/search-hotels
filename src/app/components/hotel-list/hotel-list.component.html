@@ -1,7 +1,8 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-12"><h3>Hotel Listing</h3></div>
+		<div class="col-md-12"><h2 class="title">Hotel Listing</h2><hr /></div>
+		<div class="col-md-12"><button class="btn btn-default" (click)="backForSearch()">Back for Search</button></div>
 		<div class="col-md-8 col-md-offset-4">
 			<div class="col-md-6">
 				<h4>Total Nights: {{ dateDiff }}</h4>
@@ -12,19 +13,19 @@
 			</div>
 		</div>
 		<div class="col-md-4">
-		  	<input type="text" class="form-control" [(ngModel)]="hotelName" id="search">
+		  	<input type="text" class="form-control" [(ngModel)]="hotelName" id="search" placeholder="Hotel Name">
 			<h4>Price Filter: </h4>
-		  	<nouislider [connect]="true" [step]="0.2" [min]="0" [max]="500" [(ngModel)]="hotelPrice" placeholder="Hotel name"></nouislider>
+		  	<nouislider [connect]="true" [step]="10" [min]="0" [max]="1000" [(ngModel)]="hotelPrice"></nouislider>
 		</div>
 
 		<div class="col-md-8">
 
-		  	<!-- <div *ngIf="hotels"> -->
+		  	<div *ngIf="flag">
 		  		<app-card  *ngFor="let hotel of hotels | FilterPipe: hotelName : hotelPrice" [data]="hotel"></app-card>
-		  <!-- 	</div>
-		  	<div  *ngIf="hotels.length == 0">
-		  		<h2>No available hotels in the period</h2>
-		  	</div> -->
+		  	</div>
+		  	<div  *ngIf="!flag">
+		  		<h3>No hotels available in the period</h3>
+		  	</div>
 		</div>
 	</div>
 </div>

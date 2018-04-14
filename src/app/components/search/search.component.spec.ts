@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
- import { FormsModule } from '@angular/forms';
- import { MyDatePickerModule } from 'mydatepicker';
-import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { MyDatePickerModule } from 'mydatepicker';
+import { RouterTestingModule } from '@angular/router/testing';
 import { SearchComponent } from './search.component';
 // import { HotelListComponent } from '../hotel-list/hotel-list.component';
 
@@ -12,7 +12,7 @@ describe('SearchComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SearchComponent ],
-      imports: [ FormsModule, MyDatePickerModule ]
+      imports: [ RouterTestingModule, FormsModule, MyDatePickerModule ]
     })
     .compileComponents();
   }));

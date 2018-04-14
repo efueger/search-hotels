@@ -3,7 +3,7 @@
 @import "~nouislider/distribute/nouislider.min.css";
 
 .noUi-horizontal{
-  height: 8px !important;
+  height: 6px !important;
 }
 .noUi-target{
 	background: #aaa;
@@ -14,15 +14,15 @@
   box-shadow: none;
 }
 .noUi-horizontal .noUi-handle{
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   top: -6px;
 }
 .noUi-handle{
 	box-shadow: none;
 	border-radius: 50%;
-	background-color: #ee2b47;
-	border-color: #ee2b47;
+	background-color: #31b0d5;
+	border-color: #31b0d5;
 }
 .noUi-handle::after, .noUi-handle::before{
   height: 0;

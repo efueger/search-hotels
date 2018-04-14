@@ -1,12 +1,10 @@
-import { Component } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import 'rxjs/Rx';
 
 import { CardComponent } from '../card/card.component';
 import { ApiService } from '../../services/api.service';
 import { FilterPipe } from '../../pipes/filter.pipe';
-
-
 
 @Component({
 	selector: 'app-hotel-list',
@@ -14,45 +12,50 @@ import { FilterPipe } from '../../pipes/filter.pipe';
 	styleUrls: ['./hotel-list.component.css'],
 	providers: [ ApiService ]
 })
-export class HotelListComponent{
+export class HotelListComponent implements OnInit {
 	startDate: any;
 	endDate: any;
-  	hotelPrice: number = 0;
+	hotelPrice: number = 0;
 	hotels: any;
-	result: any;
 	dateDiff: number;
 	hotelName: string;
+	flag: boolean = true;
 
-	constructor(private apiService: ApiService, private route: ActivatedRoute) {
-		
-	}
+	constructor(private apiService: ApiService, private route: ActivatedRoute,private router: Router) {}
 
 	ngOnInit() {
 	    this.route.queryParams.subscribe(params => {
-            this.startDate = params["start"];
-            this.endDate = params["end"];
-            this.dateDiff = +params["diff"];
+            this.startDate = params['start'];
+            this.endDate = params['end'];
+            this.dateDiff = +params['diff'];
 
             this.apiService.getHotels().subscribe(resp => {
-				this.result = resp['hotels'];
-				this.hotels = this.result;
+				// this.hotels = resp['hotels'];
 
-				this.hotels = this.hotels.filter(hotels => {
-			        var date = hotels.availability;
-			        for (var i = 0; i <= date.length - 1; i++) {
-			        	if (date[i].from >= this.startDate &&  date[i].to <= this.endDate){
-			        		hotels.price = hotels.price * this.dateDiff
-			        		return hotels
+				this.hotels = resp['hotels'].filter(hotels => {
+			        let date = hotels.availability;
+			        for (let i = 0; i <= date.length - 1; i++) {
+			        	if (date[i].from >= this.startDate &&  date[i].to <= this.endDate) {
+			        		hotels.price = hotels.price * this.dateDiff;
+			        		this.flag = true;
+			        		return hotels;
+			        	}else{
+			        		this.flag = false;
 			        	}
 			        }
 			    });
 
-		    }, (err)=>{
+		    }, (err) => {
 		      console.log(err);
-		    })
+		    });
 	      	
         });
 	}
+
+	backForSearch() {
+		this.router.navigate(['/']);
+	}
+
 	sortByPrice(){
 	    this.hotels.sort( (a, b)=>{
 	        if ( a.price < b.price ){
