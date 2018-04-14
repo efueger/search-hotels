@@ -1,5 +1,6 @@
 language: node_js
 node_js:
+  - "6"
   - "8"
   - "stable"
 dist: trusty
@@ -10,10 +11,10 @@ cache:
     - node_modules
 
 addons:
-  chrome: stable
+  #chrome: stable
 
 script:
   - ng test --watch false -cc
   - ng build
-  - ng e2e
+  - npm run e2e
 
