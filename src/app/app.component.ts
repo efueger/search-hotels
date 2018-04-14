@@ -7,7 +7,5 @@ import { SearchComponent } from './components/search/search.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  	
-  constructor(){	}
-
+  constructor() {}
 }
