@@ -15,5 +15,5 @@ addons:
 script:
   - ng test --watch false -cc
   - ng build
-  - npm run e2e
+  - ng e2e
 
