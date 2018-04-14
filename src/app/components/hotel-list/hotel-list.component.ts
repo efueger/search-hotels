@@ -30,7 +30,6 @@ export class HotelListComponent implements OnInit {
             this.dateDiff = +params['diff'];
 
             this.apiService.getHotels().subscribe(resp => {
-				// this.hotels = resp['hotels'];
 
 				this.hotels = resp['hotels'].filter(hotels => {
 			        let date = hotels.availability;
@@ -56,23 +55,11 @@ export class HotelListComponent implements OnInit {
 		this.router.navigate(['/']);
 	}
 
-	sortByPrice(){
-	    this.hotels.sort( (a, b)=>{
-	        if ( a.price < b.price ){
+	sortHotels(prop) {
+		this.hotels.sort( (a, b)=>{
+	        if ( a[prop] < b[prop] ){
 	          return -1;
-	        }else if( a.price > b.price ){
-	            return 1;
-	        }else{
-	          return 0;  
-	        }
-	    });
-	}
-
-	sortByName(){
-	    this.hotels.sort( (a, b) => {
-	        if ( a.name < b.name ){
-	          return -1;
-	        }else if( a.name > b.name ){
+	        }else if( a[prop] > b[prop] ){
 	            return 1;
 	        }else{
 	          return 0;  
