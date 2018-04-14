@@ -3,7 +3,7 @@ node_js:
   - "8"
   - "stable"
 dist: trusty
-sudo: true
+sudo: enabled
 
 cache:
   directories:
