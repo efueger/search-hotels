@@ -2,6 +2,9 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import "~nouislider/distribute/nouislider.min.css";
 
+.ng2-nouislider{
+  margin-bottom: 30px !important;
+}
 .noUi-horizontal{
   height: 6px !important;
 }
@@ -16,7 +19,7 @@
 .noUi-horizontal .noUi-handle{
   width: 30px;
   height: 30px;
-  top: -6px;
+  top: -11px;
 }
 .noUi-handle{
 	box-shadow: none;
