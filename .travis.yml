@@ -1,3 +1,7 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=7bec7771f815ee38945154914415d560cc3e8e10b3fe7c284a70069c09045ee6
+
 language: node_js
 node_js:
   - "8"
@@ -9,6 +13,9 @@ branches:
   - master
 
 before_script:
+ - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+ - chmod +x ./cc-test-reporter
+ - ./cc-test-reporter before-build 
  - export CHROME_BIN=/usr/bin/google-chrome
  - export DISPLAY=:99.0
  - sh -e /etc/init.d/xvfb start
@@ -21,3 +28,6 @@ script:
   - ng test --watch false -cc
   - npm run e2e
   - ng build
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
